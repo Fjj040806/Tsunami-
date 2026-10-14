@@ -1,0 +1,9 @@
+{
+  "url": "https://nctr.pmel.noaa.gov/benchmark/Solitary_wave/tsunami3_runup.zip",
+  "sha256": "b1eb73cbca75d7bb1430374e5a94aaf0abba0ce7a57b3e23fe9e67da943a85cb",
+  "bytes": 26510,
+  "raw_data_bundled": false,
+  "metadata_source": "Archive tsunami3_readme.txt, run3abc.txt, NOAA geometry figure",
+  "case": "A",
+  "units": "time seconds, water surface metres"
+}

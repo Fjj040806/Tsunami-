@@ -1,0 +1,16 @@
+{
+  "gravity_m_s2": 9.81,
+  "cfl": 0.4,
+  "lake_length_m": 1000.0,
+  "lake_cells": 400,
+  "lake_final_time_s": 100.0,
+  "lake_surface_m": 0.3,
+  "lake_smooth_depth": "10+2*cos(2*pi*x/L), cell average",
+  "lake_step_depth": "10 if x<500, else 4; aligned face",
+  "manufactured_length_m": 1000.0,
+  "manufactured_depth_m": "10+2*cos(2*pi*x/L)",
+  "manufactured_amplitude_m": 0.2,
+  "manufactured_final_time_s": 20.0,
+  "manufactured_cells": [50,100,200,400,800],
+  "scope": "Algorithm verification only: forced smooth test and unforced lake at rest. No measured tsunami observations or shoaling conclusions."
+}

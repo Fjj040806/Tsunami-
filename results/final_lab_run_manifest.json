@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "created_utc": "2026-10-02T14:37:53.235303+00:00",
+  "elapsed_seconds": 21.896590119000393,
+  "command": "python scripts/run_final_studies.py --section lab",
+  "source_sha256": {
+    "src/tsunami/__init__.py": "d9924b24277081f3fedd97ea7056d3d61b33a8dffc9b8ca2fa820733c41827d5",
+    "src/tsunami/variable.py": "e9a68aa771237b4bb6b863d4f7345403e0205d18b8eb830159d5e466909723ed",
+    "src/tsunami/initial.py": "5261e0e28105a8ad21d0824d927edd91c734d4324caa3281932754ef324f32bc",
+    "src/tsunami/manufactured.py": "a1dc43da745cb5a3e5f9654ff8a6ed31b9c4fa0a751c20b93f466115446f8af3",
+    "src/tsunami/flat.py": "08a8f119eccda1aaeb785a8612ddcc9084cc50c7c4045617ef745b26de4ccf2e",
+    "src/tsunami/studies.py": "f2daf6b0768094ed0b43c733beb44a04791d52cba1c0cf7d2fcc2ebb234931af",
+    "src/tsunami/solver.py": "3f9607a62a712c06b080a472d09a28978182ae36732d776241ce9050a49e0ffa",
+    "scripts/run_v03.py": "d4f5566b45c3a7bcacac7e5d7c7e51aa16d449f17c2033c70fb41f90c1388f29",
+    "scripts/run_final_studies.py": "5f68751bf38483115a3891a329c278939e918041678e02cec29238f615ce5937",
+    "scripts/run_experiments.py": "9aa60a08b4718d6bf33ad49b9d41f46c3a444b531e0cb7b12bf12f7fac6c0e29",
+    "scripts/fetch_noaa_data.py": "e7e91df74d38a1364e053427e4f78260afe6dd6479bdc4604dea15f199b68463",
+    "scripts/run_verification.py": "1b1054b8653a0547eb48b76ee7c177ee32bd3d2aaa380efe49846ed736967564",
+    "scripts/run_v02.py": "839c897af9f2c90df0ce2ee7f19dbf07af54bc9d8a66ecbf670d4a19fafb0eae",
+    "configs/variable_verification.json": "9fca4d207d1cdb986a8bef10cde62cba65cd1b14e0c77d14d11c7ff5ae5ec468",
+    "configs/flat_comparison.json": "63c6316e5dfa3213b4ad772448af72b9ab7d7b643396fcab6202ad4a90058ea5",
+    "configs/final_studies.json": "4ad65e0f6c07cca24bb3eb2b89b76d6e6db7b184e6ac252ea59377f016231abf"
+  }
+}

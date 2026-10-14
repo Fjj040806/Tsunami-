@@ -1,0 +1,15 @@
+{
+  "cells": 1000,
+  "amplitude_m": 0.2,
+  "depths_m": [
+    20,
+    5
+  ],
+  "sigma_m": 150,
+  "times_s": [
+    0,
+    450
+  ],
+  "frames": 61,
+  "purpose": "Illustration only; numerical conclusions use results/*.csv"
+}

@@ -1,0 +1,37 @@
+{
+  "release_date": "2026-10-02",
+  "portable_extracted_repository_tests": {
+    "tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 4.125
+  },
+  "scientific_run_source_hashes_match_delivered_sources": true,
+  "pdf": {
+    "pages": 16,
+    "all_pages_rendered_and_visually_inspected": true,
+    "overfull_warnings": 0,
+    "undefined_references": 0
+  },
+  "notebook": {
+    "executed_code_cells": 5,
+    "saved_png_outputs": 5,
+    "execution_mode": "in-process shared namespace; standard Jupyter rerun supported"
+  },
+  "gif": {
+    "frames": 61,
+    "size_px": [
+      800,
+      500
+    ],
+    "selected_frames_visually_inspected": true
+  },
+  "explorer": {
+    "javascript_and_data_checks": "passed; initial draw, scenario, slider, play/pause and finite paired frames",
+    "headless_browser_visual_check": false
+  },
+  "archive": {
+    "integrity_checked": true,
+    "raw_laboratory_data_included": false
+  }
+}

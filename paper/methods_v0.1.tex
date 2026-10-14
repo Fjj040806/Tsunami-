@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,hyperref}
+\title{A Minimal Well-Balanced Shallow-Water Solver:\\Model and Numerical Methods (V0.1)}
+\author{JIajun FU}
+\date{October 2, 2026}
+\begin{document}
+\maketitle
+\noindent\textbf{Status.} This is a methods draft for a computational project, not a completed research paper. Experimental validation, an independent linear solver, high-order reconstruction and wet/dry treatment remain future work.
+
+\section{Model and assumptions}
+Let $b(x)$ be a stationary bed elevation, $\eta(x,t)$ the free-surface elevation, and $h=\eta-b>0$ the water depth. The depth-averaged velocity is $u$ and the discharge per unit width is $q=hu$. The reference still-water level is zero; therefore the equilibrium depth is $D=-b$. We assume incompressibility, constant density, hydrostatic pressure and approximately depth-uniform horizontal velocity. Friction, rotation, dispersion and transverse propagation are excluded.
+
+Depth-integrated continuity, using the free-surface and bed kinematic conditions, gives $h_t+q_x=0$. Hydrostatic pressure is $p=\rho g(\eta-z)$, so its depth integral is $\rho gh^2/2$. Horizontal bed pressure contributes $-\rho ghb_x$. Dividing the momentum balance by density yields
+\begin{align}
+h_t+q_x&=0,\\
+q_t+\left(q^2/h+gh^2/2\right)_x&=-ghb_x.
+\end{align}
+For smooth solutions this is equivalent to $u_t+uu_x+g\eta_x=0$. Discontinuous solutions require the conservative weak formulation and an entropy condition. The characteristic velocities are $u\pm\sqrt{gh}$.
+
+Linearization about $h=D(x),u=0$ yields $\eta_t+(Du)_x=0$ and $u_t+g\eta_x=0$. For constant $D$, $\eta_{tt}=gD\eta_{xx}$ and the small-amplitude wave speed is $c_0=\sqrt{gD}$. A right-going linear wave has $u=c_0\eta/D$. A nonlinear constant-bed simple wave instead satisfies $u=2(\sqrt{gh}-\sqrt{gD})$.
+
+With $X=x/L$, $T=tc_0/L$, $H=h/D_0$, $Q=q/(D_0c_0)$ and $B=b/D_0$, the system becomes $H_T+Q_X=0$ and $Q_T+(Q^2/H+H^2/2)_X=-HB_X$. The parameters $A/D_0$ and $D_0/L$ characterize relative amplitude and the long-wave assumption. Small discrepancies between two shallow-water models do not establish validity against dispersive physics.
+
+\section{Finite-volume method}
+The unknowns are cell averages of $U=(h,q)^T$ on a uniform grid. Initial data are integrated using eight-point Gauss--Legendre quadrature. The bed is represented by one elevation per cell. Spatial and temporal accuracy are first order.
+
+At each interface, hydrostatic reconstruction follows \cite{Audusse2004}:
+\begin{align}
+b^*&=\max(b_L,b_R),\\
+h_L^*&=\max(0,h_L+b_L-b^*),\qquad
+h_R^*=\max(0,h_R+b_R-b^*),\\
+U_L^*&=(h_L^*,h_L^*u_L)^T,\qquad U_R^*=(h_R^*,h_R^*u_R)^T.
+\end{align}
+An HLL flux $\widehat F$ is computed from these reconstructed states:
+\[
+\widehat F=\frac{s_RF(U_L^*)-s_LF(U_R^*)+s_Ls_R(U_R^*-U_L^*)}{s_R-s_L}.
+\]
+Wave-speed bounds contain zero, both endpoint characteristic velocities, and the Roe estimates $\widetilde u\pm\widetilde c$, where $\widetilde u=(\sqrt{h_L^*}u_L+\sqrt{h_R^*}u_R)/(\sqrt{h_L^*}+\sqrt{h_R^*})$ and $\widetilde c=\sqrt{g(h_L^*+h_R^*)/2}$; degenerate zero-depth reconstructed states are handled with zero velocities.
+
+Define cell-side pressure corrections
+\[
+F^L=\widehat F+\begin{pmatrix}0\\g(h_L^2-(h_L^*)^2)/2\end{pmatrix},\quad
+F^R=\widehat F+\begin{pmatrix}0\\g(h_R^2-(h_R^*)^2)/2\end{pmatrix}.
+\]
+The update is $U_i^{n+1}=U_i^n-(\Delta t/\Delta x)(F^L_{i+1/2}-F^R_{i-1/2})$. The bed source is already incorporated in these corrections. At lake-at-rest equilibrium each corrected momentum flux seen by cell $i$ is $gh_i^2/2$, so the update cancels, apart from floating-point rounding.
+
+Explicit Euler uses adaptive $\Delta t=0.45\Delta x/a_{\max}$, with $a_{\max}$ bounding cell and interface speeds. Steps are shortened to output times. Nonfinite or near-dry evolved states are rejected; no evolved-depth clipping is applied. This release is restricted to fully wet physical states and does not claim a general wet/dry positivity theorem.
+
+\section{Boundary conditions and verification}
+Periodic boundaries support smooth-wave convergence tests. Reflective boundaries reverse ghost discharge. Zero-gradient outflow boundaries copy endpoint states and are not exactly nonreflecting. The pulse demonstration is kept away from the boundaries.
+
+Mass balance is checked using $M(t)-M(0)+\int_0^t(q_R-q_L)\,dt$, with the actual numerical boundary flux. Smooth nonlinear verification uses an independent characteristic reference: solve $x=\xi+[3\sqrt{gh_0(\xi)}-2\sqrt{gD}]t$ before characteristic crossing. Numerical and exact solutions are compared as cell averages. Wet-bed dam-break tests check the rarefaction--shock entropy solution. These tests verify the numerical implementation, not real-event predictive accuracy.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

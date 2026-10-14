@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-10-02T14:20:17.752792+00:00",
+  "tests_run": 27,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "failure_details": [],
+  "command": "python scripts/run_verification.py"
+}

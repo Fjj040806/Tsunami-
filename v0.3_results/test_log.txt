@@ -1,0 +1,32 @@
+test_conservation_cfl_and_positive_water (test_flat.FlatTests.test_conservation_cfl_and_positive_water) ... ok
+test_invalid_depth_and_near_dry_input (test_flat.FlatTests.test_invalid_depth_and_near_dry_input) ... ok
+test_linear_amplitude_scaling (test_flat.FlatTests.test_linear_amplitude_scaling) ... ok
+test_linear_exact_both_directions (test_flat.FlatTests.test_linear_exact_both_directions) ... ok
+test_linear_second_order_convergence (test_flat.FlatTests.test_linear_second_order_convergence) ... ok
+test_nonlinear_second_order_convergence (test_flat.FlatTests.test_nonlinear_second_order_convergence) ... ok
+test_rk2_open_boundary_flux_balance (test_flat.FlatTests.test_rk2_open_boundary_flux_balance) ... ok
+test_uniform_nonlinear_state_and_reflective_mass (test_flat.FlatTests.test_uniform_nonlinear_state_and_reflective_mass) ... ok
+test_fully_wet_and_cfl (test_solver.SolverTests.test_fully_wet_and_cfl) ... ok
+test_input_validation_and_no_mutation (test_solver.SolverTests.test_input_validation_and_no_mutation) ... ok
+test_lake_at_rest_smooth_and_step (test_solver.SolverTests.test_lake_at_rest_smooth_and_step) ... ok
+test_nonlinear_exact_wave_convergence (test_solver.SolverTests.test_nonlinear_exact_wave_convergence) ... ok
+test_outflow_mass_flux_balance (test_solver.SolverTests.test_outflow_mass_flux_balance) ... ok
+test_periodic_mass_conservation (test_solver.SolverTests.test_periodic_mass_conservation) ... ok
+test_reflective_walls_conserve_mass (test_solver.SolverTests.test_reflective_walls_conserve_mass) ... ok
+test_small_wave_speed (test_solver.SolverTests.test_small_wave_speed) ... ok
+test_uniform_moving_water (test_solver.SolverTests.test_uniform_moving_water) ... ok
+test_wet_dam_break_entropy_solution (test_solver.SolverTests.test_wet_dam_break_entropy_solution) ... ok
+test_zero_duration (test_solver.SolverTests.test_zero_duration) ... ok
+test_flat_nonlinear_exact_convergence (test_variable.VariableTests.test_flat_nonlinear_exact_convergence) ... ok
+test_forcing_independent_complex_step_residual (test_variable.VariableTests.test_forcing_independent_complex_step_residual) ... ok
+test_invalid_inputs_and_no_mutation (test_variable.VariableTests.test_invalid_inputs_and_no_mutation) ... ok
+test_lake_at_rest_smooth_and_step (test_variable.VariableTests.test_lake_at_rest_smooth_and_step) ... ok
+test_periodic_and_outflow_mass_cfl (test_variable.VariableTests.test_periodic_and_outflow_mass_cfl) ... ok
+test_smooth_variable_bed_manufactured_convergence (test_variable.VariableTests.test_smooth_variable_bed_manufactured_convergence) ... ok
+test_step_interface_transmission_identity (test_variable.VariableTests.test_step_interface_transmission_identity) ... ok
+test_variable_linear_reduces_to_flat_solver (test_variable.VariableTests.test_variable_linear_reduces_to_flat_solver) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 2.323s
+
+OK

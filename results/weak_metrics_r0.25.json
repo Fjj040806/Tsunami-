@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "depth_ratio": 0.25,
+      "transition_length_m": 2400,
+      "epsilon": 0.001,
+      "cells": 4000,
+      "relative_L2_model_difference": 0.09534766579688955,
+      "combined_mesh_sensitivity": null,
+      "difference_to_mesh_ratio": null,
+      "passes_empirical_mesh_screen": false,
+      "linear_transmitted_peak_over_A": 1.3919698245139522,
+      "nonlinear_transmitted_peak_over_A": 1.3873510037904602,
+      "linear_mass_residual": 2.9106264503193226e-16,
+      "nonlinear_mass_residual": 2.9102736210611884e-16
+    },
+    {
+      "depth_ratio": 0.25,
+      "transition_length_m": 2400,
+      "epsilon": 0.001,
+      "cells": 8000,
+      "relative_L2_model_difference": 0.095824273563751,
+      "combined_mesh_sensitivity": 0.017437010611664198,
+      "difference_to_mesh_ratio": 5.495453073799872,
+      "passes_empirical_mesh_screen": true,
+      "linear_transmitted_peak_over_A": 1.4023399930162348,
+      "nonlinear_transmitted_peak_over_A": 1.398162044811535,
+      "linear_mass_residual": 3.0952847786491005e-16,
+      "nonlinear_mass_residual": 4.3654104315917824e-16
+    },
+    {
+      "depth_ratio": 0.25,
+      "transition_length_m": 2400,
+      "epsilon": 0.001,
+      "cells": 16000,
+      "relative_L2_model_difference": 0.09588580827966171,
+      "combined_mesh_sensitivity": 0.005019095057204361,
+      "difference_to_mesh_ratio": 19.104202488061695,
+      "passes_empirical_mesh_screen": true,
+      "linear_transmitted_peak_over_A": 1.4056186849134837,
+      "nonlinear_transmitted_peak_over_A": 1.4016450980053108,
+      "linear_mass_residual": 3.076873606405693e-16,
+      "nonlinear_mass_residual": 1.1300859156420138e-15
+    }
+  ],
+  "selection": "Two slowly varying cases chosen for focused follow-up after coarse low-amplitude mesh checks failed; exploratory, not a pre-registered selection."
+}

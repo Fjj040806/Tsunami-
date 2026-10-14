@@ -1,0 +1,153 @@
+{
+  "configuration": {
+    "left_m": -4000,
+    "right_m": 4000,
+    "deep_m": 20,
+    "shallow_m": 5,
+    "center_m": -1200,
+    "sigma_m": 120,
+    "amplitude_m": 0.002,
+    "final_time_s": 220,
+    "cells": [
+      500,
+      1000,
+      2000,
+      4000
+    ]
+  },
+  "rows": [
+    {
+      "model": "linear",
+      "cells": 500,
+      "R_measured": 0.31404975737044855,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.1513351647379912,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.11234504164888111,
+      "normalized_mass_residual": 1.4551912857720278e-16,
+      "minimum_depth_m": 4.999999607478298
+    },
+    {
+      "model": "nonlinear",
+      "cells": 500,
+      "R_measured": 0.3142393804402843,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.1523484693913844,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.11383314201339549,
+      "normalized_mass_residual": 3.638317670004808e-16,
+      "minimum_depth_m": 4.999999581771191
+    },
+    {
+      "model": "nonlinear_hydrostatic",
+      "cells": 500,
+      "R_measured": 0.4191927229602044,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 0.9561226165946124,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.23840766237472685,
+      "normalized_mass_residual": 4.62340987978428e-16,
+      "minimum_depth_m": 4.999999723971556
+    },
+    {
+      "model": "linear",
+      "cells": 1000,
+      "R_measured": 0.3275892029156188,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.2742082650517021,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.0369022031918023,
+      "normalized_mass_residual": 1.6834303863195767e-16,
+      "minimum_depth_m": 4.99999999834132
+    },
+    {
+      "model": "nonlinear",
+      "cells": 1000,
+      "R_measured": 0.32761379934598267,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.2741596932568378,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.03965929648591812,
+      "normalized_mass_residual": 3.1232331439262824e-16,
+      "minimum_depth_m": 4.9999999888324975
+    },
+    {
+      "model": "nonlinear_hydrostatic",
+      "cells": 1000,
+      "R_measured": 0.4234307490609268,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.0833427496863557,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.17807179861043462,
+      "normalized_mass_residual": 2.910365537182462e-16,
+      "minimum_depth_m": 4.999999991774802
+    },
+    {
+      "model": "linear",
+      "cells": 2000,
+      "R_measured": 0.33158164093067555,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.3140916518718329,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.011635833456213353,
+      "normalized_mass_residual": 2.3531129395404754e-16,
+      "minimum_depth_m": 4.99999999965393
+    },
+    {
+      "model": "nonlinear",
+      "cells": 2000,
+      "R_measured": 0.33156355565289175,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.3139396440200457,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.015061804508297534,
+      "normalized_mass_residual": 2.9292455232775316e-16,
+      "minimum_depth_m": 4.999999997966443
+    },
+    {
+      "model": "nonlinear_hydrostatic",
+      "cells": 2000,
+      "R_measured": 0.42678512621030507,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.1236618032741674,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.1655040258194665,
+      "normalized_mass_residual": 2.980718858449468e-16,
+      "minimum_depth_m": 4.999999998722124
+    },
+    {
+      "model": "linear",
+      "cells": 4000,
+      "R_measured": 0.33273067420674635,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.3265520685963395,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.0036755428548434534,
+      "normalized_mass_residual": 3.6162786565374803e-16,
+      "minimum_depth_m": 4.999999999933916
+    },
+    {
+      "model": "nonlinear",
+      "cells": 4000,
+      "R_measured": 0.3327128173928884,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.3263014984081778,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.007923559125897357,
+      "normalized_mass_residual": 3.113128758547816e-16,
+      "minimum_depth_m": 4.999999999452355
+    },
+    {
+      "model": "nonlinear_hydrostatic",
+      "cells": 4000,
+      "R_measured": 0.4278497498511058,
+      "R_linear_reference": 0.3333333333333333,
+      "T_measured": 1.1363094224803305,
+      "T_linear_reference": 1.3333333333333333,
+      "relative_L2_to_linear_reference": 0.16448240586758572,
+      "normalized_mass_residual": 3.115007734486417e-16,
+      "minimum_depth_m": 4.999999999581568
+    }
+  ],
+  "boundary_note": "Pulse remains far from domain ends; Gaussian tails are not compactly supported."
+}

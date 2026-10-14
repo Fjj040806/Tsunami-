@@ -1,0 +1,7 @@
+{
+ "gravity_m_s2":9.81,"cfl":0.4,
+ "step":{"left_m":-4000,"right_m":4000,"deep_m":20,"shallow_m":5,"center_m":-1200,"sigma_m":120,"amplitude_m":0.002,"final_time_s":220,"cells":[500,1000,2000,4000]},
+ "shelf":{"left_m":-8000,"right_m":8000,"deep_m":20,"center_m":-2000,"sigma_m":150,"final_time_s":450,"epsilon":[0.001,0.01,0.05],"depth_ratio":[0.5,0.25],"transition_length_m":[200,800,2400],"cells":[1000,2000,4000]},
+ "lab":{"case":"A","upstream_x_m":12.64,"wall_x_m":23.22,"initial_absolute_time_s":265.05,"final_absolute_time_s":283,"baseline_samples":20,"cells":[400,800,1600],"fit_time_shift":false,"fit_parameters":false,"archive_metadata_preferred":true},
+ "mesh_screen_ratio":5.0
+}

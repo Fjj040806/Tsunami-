@@ -1,0 +1,201 @@
+{
+  "configuration": {
+    "gravity_m_s2": 9.81,
+    "cfl": 0.4,
+    "lake_length_m": 1000.0,
+    "lake_cells": 400,
+    "lake_final_time_s": 100.0,
+    "lake_surface_m": 0.3,
+    "lake_smooth_depth": "10+2*cos(2*pi*x/L), cell average",
+    "lake_step_depth": "10 if x<500, else 4; aligned face",
+    "manufactured_length_m": 1000.0,
+    "manufactured_depth_m": "10+2*cos(2*pi*x/L)",
+    "manufactured_amplitude_m": 0.2,
+    "manufactured_final_time_s": 20.0,
+    "manufactured_cells": [
+      50,
+      100,
+      200,
+      400,
+      800
+    ],
+    "scope": "Algorithm verification only: forced smooth test and unforced lake at rest. No measured tsunami observations or shoaling conclusions."
+  },
+  "lake_at_rest": [
+    {
+      "bed": "smooth",
+      "model": "linear",
+      "cells": 400,
+      "duration_s": 100.0,
+      "maximum_surface_drift_m": 3.3306690738754696e-16,
+      "maximum_velocity_m_s": 9.454649447895052e-16,
+      "mass_balance_residual": 0.0,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 8.300082245688671
+    },
+    {
+      "bed": "smooth",
+      "model": "nonlinear",
+      "cells": 400,
+      "duration_s": 100.0,
+      "maximum_surface_drift_m": 1.3489209749195652e-14,
+      "maximum_velocity_m_s": 2.3782492480808857e-14,
+      "mass_balance_residual": 0.0,
+      "maximum_actual_cfl": 0.4000000000000002,
+      "minimum_depth_m": 8.300082245688664
+    },
+    {
+      "bed": "step",
+      "model": "linear",
+      "cells": 400,
+      "duration_s": 100.0,
+      "maximum_surface_drift_m": 0.0,
+      "maximum_velocity_m_s": 4.483691438982549e-17,
+      "mass_balance_residual": 0.0,
+      "maximum_actual_cfl": 0.39999999999999997,
+      "minimum_depth_m": 4.3
+    },
+    {
+      "bed": "step",
+      "model": "nonlinear",
+      "cells": 400,
+      "duration_s": 100.0,
+      "maximum_surface_drift_m": 7.216449660063518e-16,
+      "maximum_velocity_m_s": 0.0,
+      "mass_balance_residual": 0.0,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 4.3
+    }
+  ],
+  "manufactured_convergence": [
+    {
+      "model": "linear",
+      "cells": 50,
+      "dx_m": 20.0,
+      "surface_mean_L1_error_m": 0.0005441994326584188,
+      "surface_Linf_error_m": 0.0024731123026914548,
+      "second_state_mean_L1_error": 0.0005445109385978194,
+      "observed_surface_L1_order": null,
+      "mass_balance_residual": 1.81895743020687e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.992709791819426
+    },
+    {
+      "model": "linear",
+      "cells": 100,
+      "dx_m": 10.0,
+      "surface_mean_L1_error_m": 0.0001337748130262725,
+      "surface_Linf_error_m": 0.0009454826404063088,
+      "second_state_mean_L1_error": 0.00013162610676818333,
+      "observed_surface_L1_order": 2.024328940020825,
+      "mass_balance_residual": 3.639916952064422e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990385014612596
+    },
+    {
+      "model": "linear",
+      "cells": 200,
+      "dx_m": 5.0,
+      "surface_mean_L1_error_m": 3.052266788241016e-05,
+      "surface_Linf_error_m": 0.00035487821642374295,
+      "second_state_mean_L1_error": 3.0328831284027537e-05,
+      "observed_surface_L1_order": 2.1318535386669666,
+      "mass_balance_residual": 1.8187791574658296e-16,
+      "maximum_actual_cfl": 0.39999999999999997,
+      "minimum_depth_m": 7.990213878392124
+    },
+    {
+      "model": "linear",
+      "cells": 400,
+      "dx_m": 2.5,
+      "surface_mean_L1_error_m": 6.934435436605107e-06,
+      "surface_Linf_error_m": 0.00010619853396784396,
+      "second_state_mean_L1_error": 6.955545418651499e-06,
+      "observed_surface_L1_order": 2.138030732553557,
+      "mass_balance_residual": 1.81884410916824e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990051489421108
+    },
+    {
+      "model": "linear",
+      "cells": 800,
+      "dx_m": 1.25,
+      "surface_mean_L1_error_m": 1.5334706540507933e-06,
+      "surface_Linf_error_m": 3.1502993495663434e-05,
+      "second_state_mean_L1_error": 1.5407287301685233e-06,
+      "observed_surface_L1_order": 2.176977872987778,
+      "mass_balance_residual": 1.8206370079310901e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990032284637064
+    },
+    {
+      "model": "nonlinear",
+      "cells": 50,
+      "dx_m": 20.0,
+      "surface_mean_L1_error_m": 0.0005304955517723542,
+      "surface_Linf_error_m": 0.0023844868393414487,
+      "second_state_mean_L1_error": 0.005274948977587523,
+      "observed_surface_L1_order": null,
+      "mass_balance_residual": 1.8184310034939685e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.992709791819425
+    },
+    {
+      "model": "nonlinear",
+      "cells": 100,
+      "dx_m": 10.0,
+      "surface_mean_L1_error_m": 0.0001303226934676971,
+      "surface_Linf_error_m": 0.0008706512145106871,
+      "second_state_mean_L1_error": 0.001290453146550156,
+      "observed_surface_L1_order": 2.0252523276884733,
+      "mass_balance_residual": 3.639880955826418e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990385014612598
+    },
+    {
+      "model": "nonlinear",
+      "cells": 200,
+      "dx_m": 5.0,
+      "surface_mean_L1_error_m": 3.145849782307586e-05,
+      "surface_Linf_error_m": 0.00032111855290395397,
+      "second_state_mean_L1_error": 0.00031146780407532884,
+      "observed_surface_L1_order": 2.0505666391638946,
+      "mass_balance_residual": 1.8205630839931644e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990213878392123
+    },
+    {
+      "model": "nonlinear",
+      "cells": 400,
+      "dx_m": 2.5,
+      "surface_mean_L1_error_m": 7.405949909986553e-06,
+      "surface_Linf_error_m": 0.0001315337546916595,
+      "second_state_mean_L1_error": 7.379465247242802e-05,
+      "observed_surface_L1_order": 2.086693085154443,
+      "mass_balance_residual": 1.8203918407960462e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990051489421107
+    },
+    {
+      "model": "nonlinear",
+      "cells": 800,
+      "dx_m": 1.25,
+      "surface_mean_L1_error_m": 1.7315599724776475e-06,
+      "surface_Linf_error_m": 4.0968690278475606e-05,
+      "second_state_mean_L1_error": 1.726353362563243e-05,
+      "observed_surface_L1_order": 2.0966124358414833,
+      "mass_balance_residual": 1.8204934064073478e-16,
+      "maximum_actual_cfl": 0.4,
+      "minimum_depth_m": 7.990032284637064
+    }
+  ],
+  "omitting_centered_source_instantaneous_max_q_rhs_m2_s2": 1.2925914176119424,
+  "forcing_parameters": {
+    "D0_m": 10.0,
+    "B_m": 2.0,
+    "A_m": 0.2,
+    "L_m": 1000.0,
+    "c_m_s": 9.904544411531507
+  },
+  "scope": "Numerical verification only. Manufactured forcing is artificial. No observational validation, shoaling experiment or wet/dry capability."
+}

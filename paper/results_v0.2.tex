@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,booktabs,graphicx,hyperref}
+\title{A Verified Flat-Bed Comparison of Linear and Nonlinear Shallow-Water Models}
+\author{JIajun FU}
+\date{Project working draft, V0.2, October 2, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We implement and verify constant-depth linear and nonlinear shallow-water
+solvers and compare their predictions under matched physical initial conditions.
+Independent smooth exact solutions demonstrate approximately second-order mean
+$L^1$ convergence. An amplitude sweep separates waveform model differences from
+empirical mesh sensitivity. These results establish a computational baseline;
+they do not constitute validation against observed tsunamis.
+\end{abstract}
+\section{Models and numerical methods}
+With static depth $D$, free-surface displacement $\eta$, depth-averaged velocity
+$u$, and $h=D+\eta$, the nonlinear conservation laws are
+\[
+h_t+(hu)_x=0,\qquad (hu)_t+(hu^2+gh^2/2)_x=0.
+\]
+Linearization about $h=D,u=0$ yields $\eta_t+Du_x=0$, $u_t+g\eta_x=0$.
+Scaling $\eta$ by $A$, $u$ by $(A/D)\sqrt{gD}$ and time by
+$L/\sqrt{gD}$ places a factor $\epsilon=A/D$ before the nonlinear terms.
+Small $\epsilon$ does not independently ensure negligible accumulated error
+or the validity of the nondispersive shallow-water approximation.
+
+For $W=(\eta,u)^T$ and $B=\left(\begin{smallmatrix}0&D\\g&0\end{smallmatrix}\right)$,
+the separately implemented exact upwind flux is
+$\widehat F= B(W_l+W_r)/2-c(W_r-W_l)/2$, $c=\sqrt{gD}$.
+The nonlinear solver uses HLL. Both flat-bed solvers use componentwise
+MC-limited MUSCL reconstruction and SSP-RK2 at CFL 0.4. No evolved water-depth
+clipping is applied. The variable-bed hydrostatic-reconstruction solver from
+V0.1 remains first order and is excluded from this comparison.
+
+\section{Verification and experimental controls}
+Linear traveling waves and a smooth nonlinear simple wave provide independent
+exact references, evaluated as cell averages with eight-point Gaussian quadrature.
+For $D=10$ m, $A=0.2$ m, $L=1000$ m and $t=20$ s, refinement from 400 to
+800 cells gives mean $L^1$ orders 1.9959 and 1.9985, respectively. Limited extrema
+converge more slowly in the maximum norm. Nineteen automatic tests pass,
+including conservation, boundary accounting and input-contract checks.
+
+The amplitude sweep uses a periodic domain with
+$\eta_0=A\sin(2\pi x/L)$ and $u_0=c\eta_0/D$, at $t=0.2L/c$.
+Each model receives cell averages of its own evolved variables; nonlinear
+momentum is averaged from $(D+\eta_0)u_0$, not $Du_0$.
+This is a matched-continuous-field comparison; the nonlinear initial field is
+not an exact nonlinear simple wave. Four nested meshes (400--3200 cells) are
+used for each amplitude, with 6400 cells additionally used for $\epsilon=10^{-4}$.
+
+\section{Results}
+Define $E=\operatorname{RMS}(\eta_{NL}-\eta_L)/A$. Empirical mesh sensitivity
+$S$ is the sum of each model's fine-to-coarse RMS differences divided by $A$,
+using conservative restriction. The prespecified screen $E/S\geq5$ is not
+a rigorous numerical error bound.
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$A/D$ & Finest cells & $100E$ & $E/S$\\
+\midrule
+0.0001 & 6400 & 0.00625148 & 12.78\\
+0.001 & 3200 & 0.0625149 & 40.24\\
+0.01 & 3200 & 0.625149 & 515.50\\
+0.05 & 3200 & 3.12577 & 3342.28\\
+0.1 & 3200 & 6.25171 & 6648.85\\
+0.2 & 3200 & 12.5053 & 12714.27\\
+\bottomrule
+\end{tabular}
+\end{center}
+All waveform differences pass the empirical screen. The smallest amplitude
+fails it at 3200 cells ($E/S\approx4$) and passes after refinement. For this
+initial shape and time, $E\approx0.625\epsilon$. This coefficient is not
+universal. The maximum normalized mass residual in the comparison is
+$3.64\times10^{-16}$, which alone does not bound waveform error.
+Crest-position differences at the two smallest amplitudes remain unresolved
+by the same mesh screen and are not interpreted as resolved phase shifts.
+
+\section{Limitations and next stage}
+Both models omit dispersion and use a fully wet periodic flat bed. No coastal
+shoaling, inundation, physical dissipation calibration or observational validation
+is included. A subsequent study should first verify a well-balanced higher-order
+variable-bed method and a variable-depth linear solver, then investigate
+controlled shoaling and reflection before comparison with laboratory data.
+This is an intermediate project report, not a claim of a novel numerical method.
+
+\end{document}

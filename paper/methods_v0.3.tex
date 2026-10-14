@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,booktabs,hyperref}
+\title{Variable-Bed Shallow-Water Models: A Verified Computational Foundation}
+\author{JIajun FU}
+\date{V0.3 project working draft, October 2, 2026}
+\begin{document}\maketitle
+\section{Models}
+With static bed $b(x)<0$, still-water depth $D=-b$, surface $\eta$,
+$h=D+\eta$ and discharge $q=hu$, the nonlinear equations are
+\[
+h_t+q_x=0,\qquad q_t+(q^2/h+gh^2/2)_x=-ghb_x.
+\]
+Their smooth primitive form yields, on linearization about rest,
+$\eta_t+(Du)_x=0$, $u_t+g\eta_x=0$.
+The derivative of $D$ in the mass equation cannot be discarded.
+
+\section{Discretization and equilibrium}
+The nonlinear solver reconstructs surface, velocity and bed, then applies
+HLL to hydrostatically reconstructed states. Interface pressure corrections
+and the intra-cell integrated source
+\[
+S_i^c=\left(0,\frac g2(h_{i,l}+h_{i,r})(b_{i,l}-b_{i,r})\right)^T
+\]
+follow Audusse et al.\ \cite{audusse2004}. The semidiscrete operator is
+$-[F_{i+1/2,l}-F_{i-1/2,r}]/\Delta x+S_i^c/\Delta x$.
+When $\eta=C,u=0$, the corrected pressure-flux difference equals $S_i^c$,
+so the operator vanishes up to floating-point arithmetic.
+MC limiting is applied to surface and velocity; centered bed slopes are used
+only for smooth fully wet beds. Aligned steps use constant bed reconstruction.
+No general wet/dry, entropy, or positivity theorem is claimed for this implementation.
+SSP-RK2 uses CFL 0.4 and checks the second-stage speed.
+
+For the linear model, outgoing characteristics determine common interface
+surface and discharge:
+\[
+\eta_*={c_l\eta_l+c_r\eta_r+Q_l-Q_r\over c_l+c_r},\quad
+Q_*={c_rQ_l+c_lQ_r+c_lc_r(\eta_l-\eta_r)\over c_l+c_r},
+\]
+where $Q=Du$ and $c=\sqrt{gD}$. The numerical flux is $(Q_*,g\eta_*)$.
+This reduces to the constant-depth exact upwind flux for equal depths.
+
+\section{Verification}
+A 100-second periodic still-water test on 400 cells uses smooth
+$D=10+2\cos(2\pi x/1000)$ or an aligned 10-to-4 m depth step, with
+$\eta=0.3$ m. Maximum surface drifts are
+$3.33\times10^{-16}$ and $1.35\times10^{-14}$ m for the smooth-bed
+linear and nonlinear models, respectively. All cells remain fully wet.
+
+Manufactured smooth fields specify $\eta=0.2\sin(k(x-ct))$,
+$u=c\eta/10$, $k=2\pi/1000$, $c=\sqrt{9.81\times10}$, on the smooth bed.
+Each model receives its own analytic forcing, evaluated as cell averages
+with eight-point Gaussian quadrature. Complex-step differentiation independently
+checks the forcing against the conservative PDE residual.
+At $t=20$ s, mean $L^1$ surface errors are:
+\begin{center}\begin{tabular}{rrr}\toprule
+Cells & Linear (m) & Nonlinear (m)\\\midrule
+100 & $1.33775\times10^{-4}$ & $1.30323\times10^{-4}$\\
+200 & $3.05227\times10^{-5}$ & $3.14585\times10^{-5}$\\
+400 & $6.93444\times10^{-6}$ & $7.40595\times10^{-6}$\\
+800 & $1.53347\times10^{-6}$ & $1.73156\times10^{-6}$\\\bottomrule
+\end{tabular}\end{center}
+The finest observed orders are 2.177 and 2.097. These smooth mean-norm results
+are not global accuracy claims across discontinuities. Twenty-seven automatic
+tests pass, including boundary/source mass accounting, static balance,
+independent references and input checks.
+
+\section{Scope}
+Manufactured forcing is artificial and verifies software, not physical tsunami
+predictions. Step-interface transmission identities are checked algebraically;
+full wave-packet scattering and shelf shoaling experiments remain the next stage.
+Hydrostatic reconstruction has documented limitations for some combinations
+of slope, resolution and depth \cite{delestre2012}; external experimental
+validation and wet/dry treatment are not included here.
+\begin{thebibliography}{9}
+\bibitem{audusse2004} E. Audusse et al. (2004), A Fast and Stable Well-Balanced
+Scheme with Hydrostatic Reconstruction for Shallow Water Flows,
+SIAM J. Sci. Comput. 25(6), 2050--2065.
+\href{https://doi.org/10.1137/S1064827503431090}{doi:10.1137/S1064827503431090}.
+\bibitem{delestre2012} O. Delestre et al. (2012), A limitation of the hydrostatic
+reconstruction technique for Shallow Water equations.
+\href{https://arxiv.org/abs/1206.4986}{arXiv:1206.4986}.
+\end{thebibliography}
+\end{document}
